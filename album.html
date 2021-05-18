@@ -90,7 +90,6 @@
                     <section id="playlist<%=i%>">
                         <div class="container animate__animated animate__fadeInDown">
                             <div class="row">
-
                                 <div class="col-md-4 mt-4 text-center justify-content-center">
                                     <div class="row justify-content-center p-4">
                                         <img src="<%=objs.data[i].artist.picture%>" width="80%" class="img-fluid">
@@ -273,8 +272,6 @@
 <script>
     window.onload = function () {
         ;(async function () {
-            //i need to clone [id^="playlist"] stuff and dom manipulate internal element in a iterative structure
-
             const fetchArtistSongs = (artist) => {
                 return fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`, {
                     "method": "GET",
@@ -326,11 +323,10 @@
                     );
                 }
             ;(function renderPage() {
-
                     let template = document.getElementById('target');
                     let templateText = template.textContent;
                     let render = Templater(templateText);
-                    Objs = {
+                    let Objs = {
                         data: [eminemSongs, metallicaSongs, behemothSongs]
                     };
                     template.outerHTML = render(Objs)
