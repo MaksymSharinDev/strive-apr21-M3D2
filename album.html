@@ -41,7 +41,7 @@
     <div class="container-fluid p-0">
 
         <div class="row no-gutters ">
-            <% for (let i=0; i < objs.data.length; i++) { %>
+
             <div class="col-xl-2 col-md-3 col-sm-4 ">
                 <nav class="spotify-sidebar navbar bg-dark d-flex flex-column align-items-start justify-content-start ">
                     <a class="navbar-brand mb-4" href="#">
@@ -83,18 +83,20 @@
 
                 </nav>
             </div>
+
             <div class="col-xl-10 col-md-9 col-sm-8">
                 <main>
+                    <% for (let i=0; i < objs.data.length; i++) { %>
                     <section id="playlist">
                         <div class="container animate__animated animate__fadeInDown">
                             <div class="row">
 
                                 <div class="col-md-4 mt-4 text-center justify-content-center">
                                     <div class="row justify-content-center p-4">
-                                        <img src="img/queen.jpeg" width="80%" class="img-fluid">
+                                        <img src="<%=objs.data[i].artist.picture%>" width="80%" class="img-fluid">
                                     </div>
                                     <div class="row justify-content-center">
-                                        <h5 class="pl-3 pt-2 text-white">Queen II (Deluxe Edition <br> 2011 Remaster
+                                        <h5 class="pl-3 pt-2 text-white"> <%=objs.data[i].artist.name%>
                                         </h5>
                                     </div>
                                     <div class="row justify-content-center">
@@ -109,156 +111,18 @@
                                         <i class="fa fa-ellipsis-h text-white m-3 " style="font-size: 30px;"></i></div>
 
                                 </div>
-
                                 <div class="col-8">
                                     <table class="table table-borderless">
                                         <tbody>
+                                        <% for (let j=0; j < objs.data[i].songs.length; j++) { %>
                                         <tr class="songs">
                                             <td scope="col"><i class="bi bi-music-note"></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
+                                            <td scope="col"><%=objs.data[i].songs[j].title%> <span
+                                                    class="artist-name d-flex flex-column"><%=objs.data[i].artist.name%></span></td>
                                             <td scope="row"></td>
-                                            <td scope="col">1:13</td>
+                                            <td scope="col"><%=objs.data[i].songs[j].duration%> </td>
                                         </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Father To Son - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">6:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">White Queen (As it Began) - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered Lorem ipsum, dolor sit amet
-                                                consectetur
-                                                adipisicing elit. <span
-                                                        class="artist-name d-flex flex-column">Queen</span>
-                                            </td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered Lorem ipsum, dolor sit amet
-                                                consectetur
-                                                adipisicing elit. <span
-                                                        class="artist-name d-flex flex-column">Queen</span>
-                                            </td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
-                                        <tr class="songs">
-                                            <td scope="col"><i class="bi bi-music-note"></i></i></td>
-                                            <td scope="col">Procession - Remastered <span
-                                                    class="artist-name d-flex flex-column">Queen</span></td>
-                                            <td scope="row"></td>
-                                            <td scope="col">1:13</td>
-                                        </tr>
+                                        <% }%>
                                         </tbody>
                                     </table>
                                 </div>
@@ -266,9 +130,10 @@
                         </div>
 
                     </section>
+                    <% } %>
                 </main>
             </div>
-            <% } %>
+
         </div>
 
     </div>
