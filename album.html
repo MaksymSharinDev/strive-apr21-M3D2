@@ -273,7 +273,7 @@
 <script>
     window.onload = function () {
         ;(async function () {
-            //i need to clone #playlist stuff and dom manipulate internal element in a iterative structure
+            //i need to clone [id^="playlist"] stuff and dom manipulate internal element in a iterative structure
 
             const fetchArtistSongs = (artist) => {
                 return fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`, {

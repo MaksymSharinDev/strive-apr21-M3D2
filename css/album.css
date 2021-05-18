@@ -207,23 +207,23 @@ footer #player-starting-space svg {
 
 /* Playlist */
 
-#playlist{
+*[id^="playlist"]{
     background-color: #000000;
 
 }
 
-#playlist .songs{
+*[id^="playlist"] .songs{
     color: #fff;
 }
-#playlist .songs:hover{
+*[id^="playlist"] .songs:hover{
     cursor: pointer;
 }
 
-#playlist .songs{
+*[id^="playlist"] .songs{
     color: #fff;
 }
 
-#playlist .songs .artist-name{
+*[id^="playlist"] .songs .artist-name{
     color: #b3b3b3;
 }
 .bi{
