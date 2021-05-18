@@ -117,9 +117,10 @@
                                         <tr class="songs">
                                             <td scope="col"><i class="bi bi-music-note"></i></td>
                                             <td scope="col"><%=objs.data[i].songs[j].title%> <span
-                                                    class="artist-name d-flex flex-column"><%=objs.data[i].artist.name%></span></td>
+                                                    class="artist-name d-flex flex-column"><%=objs.data[i].artist.name%></span>
+                                            </td>
                                             <td scope="row"></td>
-                                            <td scope="col"><%=objs.data[i].songs[j].duration%> </td>
+                                            <td scope="col"><%=objs.data[i].songs[j].duration%></td>
                                         </tr>
                                         <% }%>
                                         </tbody>
@@ -271,7 +272,7 @@
 <!-- <script src="albums-script.js"></script> -->
 <script>
     window.onload = function () {
-        ;(async function () {
+        ;(function () {
             const fetchArtistSongs = (artist) => {
                 return fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`, {
                     "method": "GET",
@@ -305,33 +306,32 @@
                     });
 
             }
-
-            let [eminemSongs, metallicaSongs, behemothSongs] = [
-                await fetchArtistSongs("eminem"),
-                await fetchArtistSongs("metallica"),
-                await fetchArtistSongs("behemoth")]
-
-
-            const Templater = function (templateText) {
-                    return new Function(
-                        "objs",
-                        "let output=" +
-                        JSON.stringify(templateText)
-                            .replace(/<%=(.+?)%>/g, '"+($1)+"')
-                            .replace(/<%(.+?)%>/g, '";$1\noutput+="') +
-                        ";return output;"
-                    );
-                }
-            ;(function renderPage() {
-                    let template = document.getElementById('target');
-                    let templateText = template.textContent;
-                    let render = Templater(templateText);
-                    let Objs = {
-                        data: [eminemSongs, metallicaSongs, behemothSongs]
-                    };
-                    template.outerHTML = render(Objs)
-                }
-            )()
+            Promise.all([
+                fetchArtistSongs("eminem"),
+                fetchArtistSongs("metallica"),
+                fetchArtistSongs("behemoth")])
+                .then((arr) => {
+                    let [eminemSongs, metallicaSongs, behemothSongs] = [...arr]
+                    const Templater = function (templateText) {
+                            return new Function(
+                                "objs",
+                                "let output=" +
+                                JSON.stringify(templateText)
+                                    .replace(/<%=(.+?)%>/g, '"+($1)+"')
+                                    .replace(/<%(.+?)%>/g, '";$1\noutput+="') +
+                                ";return output;"
+                            );
+                        }
+                    ;(function renderPage() {
+                        let template = document.getElementById('target');
+                        let templateText = template.textContent;
+                        let render = Templater(templateText);
+                        let Objs = {
+                            data: [eminemSongs, metallicaSongs, behemothSongs]
+                        };
+                        template.outerHTML = render(Objs)
+                    })()
+                })
         })()
     }
 </script>
